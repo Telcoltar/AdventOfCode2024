@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-func getInputData() ([]int, []int) {
-	fileContent, err := os.ReadFile("example_input.txt")
+func getInputData(inputDataPath string) ([]int, []int) {
+	fileContent, err := os.ReadFile(inputDataPath)
 	if err != nil {
 		panic(err)
 	}
@@ -22,12 +22,12 @@ func getInputData() ([]int, []int) {
 				return a == ""
 			},
 		)
-		left, err := strconv.ParseInt(leftRight[0], 10, 16)
+		left, err := strconv.ParseInt(leftRight[0], 10, 32)
 		if err != nil {
 			panic(err)
 		}
 		leftNumbers = append(leftNumbers, int(left))
-		right, err := strconv.ParseInt(leftRight[1], 10, 16)
+		right, err := strconv.ParseInt(leftRight[1], 10, 32)
 		if err != nil {
 			panic(err)
 		}
@@ -43,16 +43,34 @@ func absInt(x int) int {
 	return x
 }
 
-func main() {
-	first, second := getInputData()
-	slices.Sort(first)
-	slices.Sort(second)
-	if len(first) != len(second) {
-		panic("lenght of lists is different")
+func part1() {
+	leftList, rightList := getInputData("inputData.txt")
+	slices.Sort(leftList)
+	slices.Sort(rightList)
+	if len(leftList) != len(rightList) {
+		panic("length of lists is different")
 	}
 	difference := 0
-	for i := 0; i < len(first); i++ {
-		difference += absInt(first[i] - second[i])
+	for i := 0; i < len(leftList); i++ {
+		difference += absInt(leftList[i] - rightList[i])
 	}
 	fmt.Printf("%d\n", difference)
+}
+
+func part2() {
+	leftList, rightList := getInputData("inputData.txt")
+	count := make(map[int]int)
+	for i := 0; i < len(rightList); i++ {
+		count[rightList[i]]++
+	}
+	total := 0
+	for i := 0; i < len(leftList); i++ {
+		total += count[leftList[i]] * leftList[i]
+	}
+	fmt.Printf("%d\n", total)
+}
+
+func main() {
+	part1()
+	part2()
 }
