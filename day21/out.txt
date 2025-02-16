@@ -1,0 +1,4 @@
+code: 029A, length: 4, expanded: <vA<AA>>^AvAA<^A>Av<<A>>^AvA^Av<<A>>^AA<vA>A^A<A>Av<<A>A^>AAA<Av>A^A, alternativeExpanded: v<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^A<vA<AA>>^AvAA<^A>A<vA^>A<A>A<vA<AA>>^AvAA<^A>AAv<<A>A^>AvA^A<A>Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^AAAv<<A>>^A<vA>A^A<A>A
+code: 029A, length: 4, numericPart: 29, shortestPath: 68
+total: 1972
+time: 52.764208ms
